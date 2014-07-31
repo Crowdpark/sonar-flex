@@ -23,7 +23,7 @@ switch (param) {
     throw new Error();
   case 4: // Noncompliant
     doSomething();
-  default: // Noncompliant - default must also have "break"
+  default: // Compliant - default does not require "break"
     doSomethingElse();
 }
 </pre>

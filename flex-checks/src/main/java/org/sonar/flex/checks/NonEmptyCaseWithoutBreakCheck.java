@@ -43,6 +43,7 @@ public class NonEmptyCaseWithoutBreakCheck extends SquidCheck<LexerlessGrammar> 
   public void visitNode(AstNode astNode) {
     AstNode lastAstNode = astNode.getLastChild();
     if (lastAstNode.getFirstChild().is(FlexGrammar.STATEMENT)
+      && !astNode.getFirstChild().getTokenValue().toLowerCase().equals("default") // default: case does not break/return/throw statement
       && lastAstNode.getFirstChild().getFirstChild().isNot(FlexGrammar.BREAK_STATEMENT, FlexGrammar.RETURN_STATEMENT, FlexGrammar.THROW_STATEMENT)) {
       getContext().createLineViolation(this, "Last statement in this switch-clause should be an unconditional break.",
         Iterables.getLast(astNode.getChildren(FlexGrammar.CASE_LABEL)));

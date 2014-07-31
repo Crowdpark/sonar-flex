@@ -15,7 +15,7 @@ function foo() {
     case 0:
     case 1: // NOK
       doSomething();
-    default: // NOK
+    default: // OK
       doSomethingElse();
   }
 }
